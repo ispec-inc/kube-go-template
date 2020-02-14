@@ -23,7 +23,6 @@ fi
 
 cp kube-go-template/container/Dockerfile Dockerfile
 cp kube-go-template/container/docker-compose.yml docker-compose.yml
-cp -r kube-go-template/nginx nginx
 sed -i "" -e "s/{{app_name}}/$app_name/" docker-compose.yml
 mkdir k8s
 for env in ${envs[@]}

@@ -29,6 +29,6 @@ for env in ${envs[@]}
 do
 mkdir k8s/${env}
 cp kube-go-template/manifest/* k8s/"${env}"
-find k8s/"${env}"/*.yml | xargs sed -i "" -e "s/{{app_name}}/$env-$app_name/"
+find k8s/"${env}"/*.yml | xargs sed -i "" -e "s/{{app_name}}/$app_name/"
 done
 rm -rf kube-go-template

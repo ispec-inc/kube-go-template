@@ -1,0 +1,22 @@
+name: Deploy Prod
+
+on:
+  push:
+    # provisional config
+    branches: master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v1
+      - uses: ispec-inc/actions-eks-deploy@master
+        with:
+          image_uri: 315250626010.dkr.ecr.ap-northeast-1.amazonaws.com/{{application_name}}
+          kube_config_data: ${{ secrets.KUBE_CONFIG_DATA }}
+          kube_apply_dir: kubernetes/prod
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-northeast-1

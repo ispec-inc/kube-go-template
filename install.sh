@@ -32,13 +32,14 @@ fi
 cp workflow.yml .github/workflows/prod.yml
 
 sed -i "" -e "s/{{app_name}}/$app_name/" docker-compose.yml
-if [! -d k8s]; then
-mkdir k8s
+
+if [! -d "k8s"]; then
+  mkdir k8s
 fi
 for env in ${envs[@]}
 do
 cp kube-go-template/manifest/* k8s/"${env}"
 find k8s/"${env}"/*.yml | xargs sed -i "" -e "s/{{app_name}}/$app_name/"
-find workflow.yml | xargs sed -i "" -e "s/{{app_name}}/$app_name/"
+find .github/workflows/prod.yml | xargs sed -i "" -e "s/{{app_name}}/$app_name/"
 done
 rm -rf kube-go-template

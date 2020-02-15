@@ -26,7 +26,7 @@ fi
 cp kube-go-template/container/Dockerfile Dockerfile
 cp kube-go-template/container/docker-compose.yml docker-compose.yml
 
-if [ ! -d  ".github/workflows"];then
+if [ -d  .github/workflows];then
   mkdir -p .github/workflows
 fi
 cp workflow.yml .github/workflows/prod.yml
@@ -35,7 +35,7 @@ sed -i "" -e "s/{{app_name}}/$app_name/" docker-compose.yml
 
 for env in ${envs[@]}
 do
-  if [! -d k8s/${env}]; then
+  if [ -d k8s/${env}]; then
     mkdir -p k8s/${env}
   fi
   cp kube-go-template/manifest/* k8s/"${env}"

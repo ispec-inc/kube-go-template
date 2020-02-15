@@ -32,7 +32,9 @@ fi
 cp workflow.yml .github/workflows/prod.yml
 
 sed -i "" -e "s/{{app_name}}/$app_name/" docker-compose.yml
+if [! -d k8s]; then
 mkdir k8s
+fi
 for env in ${envs[@]}
 do
 mkdir k8s/${env}

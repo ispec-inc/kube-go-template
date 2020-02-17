@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ispec-inc/actions-eks-deploy@master
         with:
-          image_uri: 315250626010.dkr.ecr.ap-northeast-1.amazonaws.com/{{application_name}}
+          image_uri: 315250626010.dkr.ecr.ap-northeast-1.amazonaws.com/{{app_name}}
           kube_config_data: ${{ secrets.KUBE_CONFIG_DATA }}
           kube_apply_dir: kubernetes/prod
         env:

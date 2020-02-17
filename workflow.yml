@@ -15,7 +15,7 @@ jobs:
         with:
           image_uri: 315250626010.dkr.ecr.ap-northeast-1.amazonaws.com/{{app_name}}
           kube_config_data: ${{ secrets.KUBE_CONFIG_DATA }}
-          kube_apply_dir: kubernetes/prod
+          kube_apply_dir: k8s/prod
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

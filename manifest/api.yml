@@ -34,9 +34,6 @@ spec:
       containers:
       - name: {{app_name}}
         image: {{aws_account_id}}.dkr.ecr.ap-northeast-1.amazonaws.com/{{app_name}}:TAG
-        envFrom:
-          - configMapRef:
-              name: {{app_name}}-config
         imagePullPolicy: Always
         ports:
           - containerPort: 9000

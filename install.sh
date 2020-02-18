@@ -47,4 +47,5 @@ do
 done
 
 find .github/workflows/prod.yml | xargs sed -i "" -e "s/{{app_name}}/$app_name/"
+find .github/workflows/prod.yml | xargs sed -i "" -e "s/{{aws_account_id}}/$AWS_ACCOUNT_ID/"
 rm -rf kube-go-template
